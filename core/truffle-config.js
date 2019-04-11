@@ -24,7 +24,14 @@
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
+// Loading Environment Variable from .env
+console.log('Load ENV VARIABLEs from .env!')
+require('dotenv').config()
+
 module.exports = {
+
+  plugins: ["truffle-security"],
+
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle
@@ -42,6 +49,12 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
+    ganache_cli: {
+      host: "127.0.0.1",     // Localhost (default: none)
+      port: 8545,            // Standard Ethereum port (default: none)
+      network_id: "*",       // Any network (default: none)
+    },
+
     development: {
       host: "127.0.0.1",     // Localhost (default: none)
       port: 7545,            // Standard Ethereum port (default: none)
@@ -85,7 +98,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.4.22",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.4.24",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //   optimizer: {

@@ -1,12 +1,12 @@
 const SimpleEVoting = artifacts.require("./SimpleEVoting.sol");
 
 contract('SimpleEVoting', function (accounts) {
-  
+
   contract('SimpleEVoting.endProposalRegistration - onlyAdministrator modifier ', function (accounts) {
     it(
-      "The voting administrator should be able to end the proposal registration session only after it has started", 
+      "The voting administrator should be able to end the proposal registration session only after it has started",
       async function () {
-        //arrange 
+        //arrange
         let simpleEVotingInstance = await SimpleEVoting.deployed();
         let votingAdministrator = await simpleEVotingInstance.administrator();
 
@@ -21,7 +21,7 @@ contract('SimpleEVoting', function (accounts) {
           //assert
           assert.isTrue(votingAdministrator != nonVotingAdministrator);
           assert.equal(
-            e, 
+            e,
             "Error: Returned error: VM Exception while processing transaction: revert the caller of this function must be the administrator -- Reason given: the caller of this function must be the administrator.");
         }
       });
@@ -29,9 +29,9 @@ contract('SimpleEVoting', function (accounts) {
 
   contract('SimpleEVoting.endProposalRegistration - onlyDuringProposalsRegistration modifier', function (accounts) {
     it(
-      "An account that is not the voting administrator must not be able to end the proposal registration session", 
+      "An account that is not the voting administrator must not be able to end the proposal registration session",
       async function () {
-        //arrange 
+        //arrange
         let simpleEVotingInstance = await SimpleEVoting.deployed();
         let votingAdministrator = await simpleEVotingInstance.administrator();
 
@@ -43,7 +43,7 @@ contract('SimpleEVoting', function (accounts) {
         catch (e) {
           //assert
           assert.equal(
-            e, 
+            e,
             "Error: Returned error: VM Exception while processing transaction: revert this function can be called only during proposals registration -- Reason given: this function can be called only during proposals registration.");
         }
       });
@@ -51,9 +51,9 @@ contract('SimpleEVoting', function (accounts) {
 
   contract('SimpleEVoting.endProposalRegistration - successful', function (accounts) {
     it(
-      "An account that is not the voting administrator must not be able to end the proposal registration session", 
+      "An account that is not the voting administrator must not be able to end the proposal registration session",
       async function () {
-        //arrange 
+        //arrange
         let simpleEVotingInstance = await SimpleEVoting.deployed();
         let votingAdministrator = await simpleEVotingInstance.administrator();
 
@@ -62,8 +62,8 @@ contract('SimpleEVoting', function (accounts) {
         let expectedWorkflowStatus = 1;
 
         assert.equal(
-          workflowStatus.valueOf(), 
-          expectedWorkflowStatus, 
+          workflowStatus.valueOf(),
+          expectedWorkflowStatus,
           "The current workflow status does not correspond to proposal registration session started");
 
         //act
@@ -73,8 +73,8 @@ contract('SimpleEVoting', function (accounts) {
 
         //assert
         assert.equal(
-          newWorkflowStatus.valueOf(), 
-          newExpectedWorkflowStatus, 
+          newWorkflowStatus.valueOf(),
+          newExpectedWorkflowStatus,
           "The current workflow status does not correspond to proposal registration session ended");
     });
   });

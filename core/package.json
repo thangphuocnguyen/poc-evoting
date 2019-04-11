@@ -2,18 +2,21 @@
   "name": "enpievoting",
   "version": "1.0.0",
   "description": "Simple Demo of E Voting Dapps",
-  "main": "truffle-config.js",
+  "main": "app.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "web3": "^1.0.0-beta.52"
   },
   "devDependencies": {
-    "mocha": "^6.1.2"
+    "ganache-cli": "^6.4.2",
+    "mocha": "^6.1.2",
+    "truffle-security": "^1.3.4"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "truffle test"
   },
   "keywords": [
     "evoting",

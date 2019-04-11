@@ -93,6 +93,19 @@ module.exports = {
   // Set default mocha options here, use special reporters etc.
   mocha: {
     // timeout: 100000
+    // ------------------------------------------------------------------------
+    // ETH Gas Reporter
+    // https://github.com/cgewecke/eth-gas-reporter
+    reporter: 'eth-gas-reporter',
+      reporterOptions : {
+        // Exchange rates loaded at runtime from the coinmarketcap api.
+        // https://coinmarketcap.com/api/documentation/v1/#section/Standards-and-Conventions
+        currency: 'USD',
+        // currency: 'VND',
+        // https://ethgasstation.info/
+        // gwei, default is gastation runtime
+        gasPrice: 5
+      }
   },
 
   // Configure your compilers

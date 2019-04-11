@@ -1,0 +1,24 @@
+{
+  "name": "enpievoting",
+  "version": "1.0.0",
+  "description": "Simple Demo of E Voting Dapps",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "web3": "^1.0.0-beta.52"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "evoting",
+    "demo"
+  ],
+  "author": "enpiti",
+  "license": "MIT"
+}
